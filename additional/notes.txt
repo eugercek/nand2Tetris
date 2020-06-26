@@ -1,0 +1,11 @@
+You can think of the RAM as an array of cells (or registers, or boxes).
+The number of cell that you can have depend on how many bits are in the address: address with k bits can point to 2^k different positions.
+This is called the "length" of the RAM.
+
+
+Cache RAM is there so that the CPU can get to commonly used data as fast as possible.
+Cache RAM is usually the same width as the CPU. System RAM can be various widths, and if necessary, multiple reads can occur to assemble the data into a CPU width word.
+The CPU must be able to wait for the memory controller to do it's work.
+One of the reasons for this is the speed of light limitation. 
+If the CPU is running at 1 Ghz, the cycle time is 1 ns (1x10^-9 s) in this time information can only travel 30 cm!
+The main memory may too far from the CPU for addresses to get to the RAM and data to get back before the CPU needs it.
