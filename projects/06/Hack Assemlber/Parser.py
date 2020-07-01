@@ -3,7 +3,7 @@ class Parser:
         pass
     def aParser(self,line):
         if "//" in line:
-            formattedLine = line.split("//")[0].replace(" ","")
+            formattedLine = line.split("//")[0].replace(" ","")#foo//bar ====> foo
         else:
             formattedLine = line.replace(" ","")
         return formattedLine.strip()[1:]#omitted @
