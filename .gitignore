@@ -2,3 +2,5 @@
 *.cmp
 original
 tools
+Pipfile
+.venv

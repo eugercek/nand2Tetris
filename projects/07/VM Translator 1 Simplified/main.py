@@ -3,10 +3,7 @@ import glob
 from VMTranslator import VMTranslator
 import argparse
 
-parser = argparse.ArgumentParser(prog="VMTranslator",
-    description="Translates VM code to Assembly code")
-
-
+parser = argparse.ArgumentParser(prog="VMTranslator",description="Translates VM code to Assembly code")
 
 parser.add_argument("mode",help="One file or Every *.vm file?", choices=["f","d","file","directory"])
 parser.add_argument("name",help="File/Directory will translate ", nargs="?")
@@ -18,7 +15,7 @@ args = parser.parse_args()
 if args.mode in["d","directory"]:
     if args.name != None:#Default current directory
         os.chdir(args.name)
-        
+
     dir_files = glob.glob("*.vm")
 
     for file in dir_files:
@@ -35,9 +32,8 @@ else:
         except:
             print("There is no .vm file in current directory")
             exit()
-    
+
     translator = VMTranslator(file_name,args.printline)
-    translator.translate()        
-            
+    translator.translate()
 
 

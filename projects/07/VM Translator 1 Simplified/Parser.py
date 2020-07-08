@@ -1,4 +1,5 @@
 from Constants import Constants
+import request
 class Parser(Constants):
     def __init__(self):
         pass
