@@ -3,15 +3,17 @@ import glob
 from Parser import Parser
 from CodeWriter import CodeWriter
 from Constants import Constants
-parser = Parser()
+
 if __name__ == '__main__':
-    if '.' in sys.argv[1]:# This means there is only one file
+    parser = Parser()
+    if '.' in sys.argv[1]:# .vm file input
         out_file_name =sys.argv[1].split('.')[0]+ '.asm'
         code_writer = CodeWriter(out_file_name)
-        with open(sys.argv[1], 'r') as read_file: #Marching through file
-            for line in read_file:
-                debug_line = line
-                print(line)
+        with open(sys.argv[1], 'r') as read_file:
+            for line in read_file: #Marching through file
+                debug_line = line #For debug purposes
+                # debug_line = Constants.NO_DEBUG
+                #print(line)
                 formattedLine = parser.formatter(line)
                 if formattedLine == Constants.NOT_COMMAND:
                     continue
