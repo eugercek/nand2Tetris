@@ -1,0 +1,29 @@
+class Listener {
+
+  field Editor editor;
+
+  constructor Listener new() {
+    let editor = Editor.new();
+    return this;
+  }
+
+  method void start() {
+    // var char key;  
+    // var boolean exit;
+    // let exit = false;
+
+    // while (~exit) {
+      //   let key = Keyboard.keyPressed();
+      //   do Sys.wait(100);
+      //   do editor.operation(key);
+    //  } 
+    do editor.normal_mode();
+    return;
+  }
+
+  method void dispose() {
+    do editor.dispose();
+    do Memory.deAlloc(this);
+    return;
+  }
+}

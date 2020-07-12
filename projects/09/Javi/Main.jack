@@ -1,0 +1,9 @@
+class Main {
+      function void main() {
+            var Listener listener;
+            let listener = Listener.new();
+            do listener.start();
+            do listener.dispose();
+            return;
+      }
+}

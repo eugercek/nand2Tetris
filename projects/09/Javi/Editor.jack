@@ -1,0 +1,81 @@
+class Editor {
+
+  field int mode; //0 Normal 1 insert
+  field int seekx;
+  field int seeky;
+  field char key;
+  field String mode_name;
+
+  constructor Editor new() {
+    let exit = 0;
+    let mode = 0;
+    let seekx = 0;
+    let seeky = 0;
+    let String mode_name = Sting.new();
+    var mode_name 
+    do Output.moveCursor(22,5);
+    do Output.printString("Normal");
+    return this;
+  }
+
+  method void normal_mode() {
+    while (~exit) { 
+      let key = Keyboard.keyPressed();
+      do Sys.wait(100);
+      do editor.operation(key);
+
+      if (key = 105) { // i
+        do insert_mode(); 
+      }
+    } 
+    return;
+  }
+
+  method void insert_mode() {
+    if (key = 27) { // ESC
+      do Output.moveCursor(0,0);
+      do Output.println();
+      let mode = 0;
+      do Output.moveCursor(22,5);
+      do Output.printString("Normal");
+    }
+
+    while (~(mode = 1)) {
+      let key = Keyboard.readChar();
+      if (key = 27) { // ESC
+        let mode = 0;
+        do Output.moveCursor(22,5);
+        do Output.printString("Normal");
+      }
+    } 
+    do Output.moveCursor(22,5);
+    do Output.moveCursor(0,0);
+    do Keyboard.readChar();
+
+    return;
+  }
+  method void operation(char key_arg) {
+    let key = key_arg;
+    if ( mode = 0 ) {
+      do normal_mode();
+    }
+    else {
+      do insert_mode();
+    }
+
+    return;
+  }
+
+  method void dispose() {
+    do Memory.deAlloc(this);
+    return;
+  }
+
+  method void status_line(int mode) {
+    if (mode = 1){
+
+    do Output.moveCursor(0,0);
+    do Output.moveCursor(22,5);
+    do Output.printString("Insert");
+    }
+}
